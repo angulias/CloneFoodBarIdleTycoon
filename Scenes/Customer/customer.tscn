@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://bssmo4qo5ameu"]
+
+[ext_resource type="PackedScene" uid="uid://c2m4usv6irhy5" path="res://Scenes/cashier/cashier.tscn" id="1_uci67"]
+[ext_resource type="Script" uid="uid://f7n6bid0tj0g" path="res://Scenes/Customer/customer.gd" id="2_b53n7"]
+[ext_resource type="Texture2D" uid="uid://54j5dsmbmddu" path="res://Assets/Sprites/UI/circle.png" id="3_yq8ln"]
+[ext_resource type="Texture2D" uid="uid://cjotxwoiywfcg" path="res://Assets/Sprites/UI/Coffee.png" id="4_xnbkp"]
+[ext_resource type="FontFile" uid="uid://dap4g4m6yiyt2" path="res://Assets/Fonts/Bake Soda.otf" id="5_nmlg2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_acsmi"]
+font = ExtResource("5_nmlg2")
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+
+[node name="Customer" unique_id=386972981 instance=ExtResource("1_uci67")]
+script = ExtResource("2_b53n7")
+
+[node name="Body" parent="Visuals" parent_id_path=PackedInt32Array(386562773) index="1" unique_id=1833847793]
+unique_name_in_owner = true
+
+[node name="Face" parent="Visuals" parent_id_path=PackedInt32Array(386562773) index="2" unique_id=1842080389]
+unique_name_in_owner = true
+
+[node name="HandLeft" parent="Visuals" parent_id_path=PackedInt32Array(386562773) index="3" unique_id=35183805]
+unique_name_in_owner = true
+
+[node name="HandRight" parent="Visuals" parent_id_path=PackedInt32Array(386562773) index="4" unique_id=1005770210]
+unique_name_in_owner = true
+
+[node name="ItemBox" type="Control" parent="." index="2" unique_id=459745646]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -138.0
+offset_top = -138.0
+offset_right = -38.0
+offset_bottom = -38.0
+
+[node name="BG" type="TextureRect" parent="ItemBox" index="0" unique_id=1853802771]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_yq8ln")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ItemImg" type="TextureRect" parent="ItemBox/BG" index="0" unique_id=1864609538]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 0
+offset_left = 5.0
+offset_top = 20.0
+offset_right = 65.0
+offset_bottom = 80.0
+texture = ExtResource("4_xnbkp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ItemLabel" type="Label" parent="ItemBox/BG" index="1" unique_id=753420702]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 58.0
+offset_top = 36.0
+offset_right = 98.0
+offset_bottom = 85.0
+text = "3"
+label_settings = SubResource("LabelSettings_acsmi")
