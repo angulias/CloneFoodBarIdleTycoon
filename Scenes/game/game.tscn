@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cnujutjrbnkiq"]
+
+[ext_resource type="Texture2D" uid="uid://3h6l8y0ijifd" path="res://Assets/Sprites/Bakground.png" id="1_g0siu"]
+[ext_resource type="Texture2D" uid="uid://ddtj81nf4s5yj" path="res://Assets/Sprites/Counter.png" id="2_7pssd"]
+[ext_resource type="Texture2D" uid="uid://nlgr18aqvkvm" path="res://Assets/Sprites/Counter_half.png" id="3_d0b77"]
+[ext_resource type="PackedScene" uid="uid://c2m4usv6irhy5" path="res://Scenes/cashier/cashier.tscn" id="4_g0siu"]
+
+[node name="Game" type="Node2D" unique_id=702045743]
+
+[node name="BG" type="Sprite2D" parent="." unique_id=320735311]
+texture = ExtResource("1_g0siu")
+centered = false
+
+[node name="MainCounter" type="Sprite2D" parent="." unique_id=1840508318]
+position = Vector2(537, 855)
+texture = ExtResource("2_7pssd")
+
+[node name="CoffeeCounter" type="Sprite2D" parent="." unique_id=666576715]
+position = Vector2(417, 1382)
+scale = Vector2(0.8, 0.9)
+texture = ExtResource("3_d0b77")
+
+[node name="BurgerCounter" type="Sprite2D" parent="." unique_id=1240910167]
+position = Vector2(657, 1382)
+scale = Vector2(0.8, 0.9)
+texture = ExtResource("3_d0b77")
+
+[node name="Cashier" parent="." unique_id=386972981 instance=ExtResource("4_g0siu")]
+position = Vector2(544, 1135)
