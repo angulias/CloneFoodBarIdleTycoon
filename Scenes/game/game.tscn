@@ -4,6 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://ddtj81nf4s5yj" path="res://Assets/Sprites/Counter.png" id="2_7pssd"]
 [ext_resource type="Texture2D" uid="uid://nlgr18aqvkvm" path="res://Assets/Sprites/Counter_half.png" id="3_d0b77"]
 [ext_resource type="PackedScene" uid="uid://c2m4usv6irhy5" path="res://Scenes/cashier/cashier.tscn" id="4_g0siu"]
+[ext_resource type="Script" uid="uid://b8ub1mbmiim07" path="res://Scenes/manager/customer_manager.gd" id="5_7pssd"]
+[ext_resource type="Script" uid="uid://poy1h8i0j20p" path="res://data/customerdata.gd" id="6_meiaf"]
+[ext_resource type="Resource" uid="uid://ymxv4l5wrkla" path="res://data/customer_green.tres" id="7_kw6cb"]
+[ext_resource type="Resource" uid="uid://cjna7s5gwtwr" path="res://data/customer_pink.tres" id="8_ii7ab"]
+[ext_resource type="Resource" uid="uid://fej5q46wxuab" path="res://data/customer_purple.tres" id="9_hxkax"]
+[ext_resource type="Resource" uid="uid://crsweeuc62jof" path="res://data/customer_red.tres" id="10_7rk1p"]
+[ext_resource type="Resource" uid="uid://bt1k6ue46hciy" path="res://data/customer_yellow.tres" id="11_jbxxx"]
+[ext_resource type="PackedScene" uid="uid://bssmo4qo5ameu" path="res://Scenes/Customer/customer.tscn" id="12_kw6cb"]
 
 [node name="Game" type="Node2D" unique_id=702045743]
 
@@ -27,3 +35,21 @@ texture = ExtResource("3_d0b77")
 
 [node name="Cashier" parent="." unique_id=386972981 instance=ExtResource("4_g0siu")]
 position = Vector2(544, 1135)
+
+[node name="CustomerManager" type="Node" parent="." unique_id=1443366872 node_paths=PackedStringArray("spawn_positions")]
+script = ExtResource("5_7pssd")
+spawn_positions = [NodePath("TopSpawnPos"), NodePath("BottomSpawnPos")]
+customer_sprites = Array[ExtResource("6_meiaf")]([ExtResource("7_kw6cb"), ExtResource("8_ii7ab"), ExtResource("9_hxkax"), ExtResource("10_7rk1p"), ExtResource("11_jbxxx")])
+customer_scene = ExtResource("12_kw6cb")
+
+[node name="TopSpawnPos" type="Marker2D" parent="CustomerManager" unique_id=547741644]
+position = Vector2(-116, 172)
+
+[node name="BottomSpawnPos" type="Marker2D" parent="CustomerManager" unique_id=743335839]
+position = Vector2(-116, 614)
+
+[node name="SpawnTimer" type="Timer" parent="CustomerManager" unique_id=351607747]
+wait_time = 3.5
+autostart = true
+
+[connection signal="timeout" from="CustomerManager/SpawnTimer" to="CustomerManager" method="_on_spawn_timer_timeout"]
