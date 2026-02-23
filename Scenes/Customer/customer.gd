@@ -16,12 +16,15 @@ var current_order_status: int
 
 var counter_pos: Vector2
 var being_served: bool
+var waiting_order: bool
+
+func _process(delta: float) -> void:
+	item_label.text = str(current_order_status)
 
 func init_customer(item: Item, quantity: int) -> void:
 	request_item = item
 	request_quantity = quantity
 	current_order_status = quantity
-	#show_request()
 
 func set_sprites(data: CustomerData) -> void:
 	body.texture = data.body
@@ -42,7 +45,27 @@ func move_to_counter() -> void:
 	tween.finished.connect(
 		func(): 
 			anim_player.play("Idle")
+			waiting_order = true
 			GameManager.on_customer_request.emit(self))
+
+func receive_order() -> void:
+	current_order_status -= 1
+	if current_order_status <= 0:
+		order_completed()
+
+func order_completed() -> void:
+	item_box.hide()
+	waiting_order = false
+	var counter_top_pos = counter_pos.y - 126
+	var tween := create_tween()
+	tween.tween_property(self, "position", Vector2(counter_pos.x, counter_top_pos), 1.0)
+	tween.tween_interval(0.2)
+	tween.tween_property(self, "position", Vector2(counter_pos.x + 800, counter_top_pos), 3.0)
+	tween.tween_interval(0.2)
+	tween.finished.connect(func(): 
+		GameManager.on_customer_order_completed.emit(self)
+		self.queue_free()
+	)
 
 func show_request() -> void:
 	item_box.show()

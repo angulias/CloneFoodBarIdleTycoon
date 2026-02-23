@@ -1,6 +1,8 @@
 extends Node2D
 class_name Cashier
 
+signal on_order_completed(cashier: Cashier)
+
 @export var move_speed := 50.0
 
 @onready var cook_bar: CookBar = $CookBar
@@ -43,7 +45,17 @@ func start_cook_time() -> void:
 	cook_bar.cook_item(item_request.cook_time)
 
 func deliver_order() -> void:
-	print("cook completed")
+	move_to_customer()
+	await get_tree().create_timer(1.1).timeout
+	current_customer.receive_order()
+	GameManager.current_coins += item_request.profit
+	
+	if not current_customer.current_order_status <= 0:
+		move_to_item_position()
+	else:
+		animation_player.play("Idle")
+		current_customer = null
+		on_order_completed.emit(self)
 
 func _on_cook_bar__on_cook_completed() -> void:
 	cook_bar.hide()

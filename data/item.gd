@@ -19,7 +19,7 @@ enum ItemType {
 @export var upgrade_multi := 1.3
 
 @export_group("Profit")
-@export var profit_cost := 4.0
+@export var profit := 4.0
 @export var profit_multi := 1.2
 
 var max_level := 75

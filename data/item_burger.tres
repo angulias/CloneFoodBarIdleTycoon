@@ -9,5 +9,4 @@ id = "Burger"
 type = 1
 sprite = ExtResource("2_72abt")
 upgrade_cost = 4.0
-profit_cost = 5.0
 metadata/_custom_type_script = "uid://b43sat0rvw3lo"
