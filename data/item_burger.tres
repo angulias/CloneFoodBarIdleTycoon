@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://b1istkqi0apk0"]
+
+[ext_resource type="Script" uid="uid://b43sat0rvw3lo" path="res://data/item.gd" id="1_vjyhh"]
+[ext_resource type="Texture2D" uid="uid://b5ih4a6syw0qk" path="res://Assets/Sprites/UI/Burger.png" id="2_72abt"]
+
+[resource]
+script = ExtResource("1_vjyhh")
+id = "Burger"
+type = 1
+sprite = ExtResource("2_72abt")
+upgrade_cost = 4.0
+profit_cost = 5.0
+metadata/_custom_type_script = "uid://b43sat0rvw3lo"
