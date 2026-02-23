@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://ddtj81nf4s5yj" path="res://Assets/Sprites/Counter.png" id="2_7pssd"]
 [ext_resource type="Texture2D" uid="uid://nlgr18aqvkvm" path="res://Assets/Sprites/Counter_half.png" id="3_d0b77"]
 [ext_resource type="PackedScene" uid="uid://c2m4usv6irhy5" path="res://Scenes/cashier/cashier.tscn" id="4_g0siu"]
+[ext_resource type="Texture2D" uid="uid://cjotxwoiywfcg" path="res://Assets/Sprites/UI/Coffee.png" id="4_jbxxx"]
+[ext_resource type="Texture2D" uid="uid://b5ih4a6syw0qk" path="res://Assets/Sprites/UI/Burger.png" id="5_2wwbv"]
 [ext_resource type="Script" uid="uid://b8ub1mbmiim07" path="res://Scenes/manager/customer_manager.gd" id="5_7pssd"]
 [ext_resource type="Script" uid="uid://poy1h8i0j20p" path="res://data/customerdata.gd" id="6_meiaf"]
 [ext_resource type="Resource" uid="uid://ymxv4l5wrkla" path="res://data/customer_green.tres" id="7_kw6cb"]
@@ -12,29 +14,42 @@
 [ext_resource type="Resource" uid="uid://crsweeuc62jof" path="res://data/customer_red.tres" id="10_7rk1p"]
 [ext_resource type="Resource" uid="uid://bt1k6ue46hciy" path="res://data/customer_yellow.tres" id="11_jbxxx"]
 [ext_resource type="PackedScene" uid="uid://bssmo4qo5ameu" path="res://Scenes/Customer/customer.tscn" id="12_kw6cb"]
+[ext_resource type="Script" uid="uid://2d60hkwqmts5" path="res://Scenes/manager/counter_manager.gd" id="13_ii7ab"]
+[ext_resource type="Script" uid="uid://c4005qbimoyvh" path="res://Scenes/manager/cashier_manager.gd" id="14_hxkax"]
 
 [node name="Game" type="Node2D" unique_id=702045743]
 
 [node name="BG" type="Sprite2D" parent="." unique_id=320735311]
 texture = ExtResource("1_g0siu")
 centered = false
+metadata/_edit_lock_ = true
 
 [node name="MainCounter" type="Sprite2D" parent="." unique_id=1840508318]
 position = Vector2(537, 855)
 texture = ExtResource("2_7pssd")
+metadata/_edit_lock_ = true
 
 [node name="CoffeeCounter" type="Sprite2D" parent="." unique_id=666576715]
 position = Vector2(417, 1382)
 scale = Vector2(0.8, 0.9)
 texture = ExtResource("3_d0b77")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CoffeeCounter" unique_id=1382939461]
+position = Vector2(-66.24999, -53.333332)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("4_jbxxx")
 
 [node name="BurgerCounter" type="Sprite2D" parent="." unique_id=1240910167]
 position = Vector2(657, 1382)
 scale = Vector2(0.8, 0.9)
 texture = ExtResource("3_d0b77")
+metadata/_edit_lock_ = true
 
-[node name="Cashier" parent="." unique_id=386972981 instance=ExtResource("4_g0siu")]
-position = Vector2(544, 1135)
+[node name="Sprite2D" type="Sprite2D" parent="BurgerCounter" unique_id=154403653]
+position = Vector2(-53.749992, -56.666664)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_2wwbv")
 
 [node name="CustomerManager" type="Node" parent="." unique_id=1443366872 node_paths=PackedStringArray("spawn_positions")]
 script = ExtResource("5_7pssd")
@@ -51,5 +66,30 @@ position = Vector2(-116, 614)
 [node name="SpawnTimer" type="Timer" parent="CustomerManager" unique_id=351607747]
 wait_time = 3.5
 autostart = true
+
+[node name="CounterManager" type="Node" parent="." unique_id=1316771566 node_paths=PackedStringArray("counter_positions")]
+unique_name_in_owner = true
+script = ExtResource("13_ii7ab")
+counter_positions = [NodePath("Pos0"), NodePath("Pos1"), NodePath("Pos2"), NodePath("Pos3")]
+
+[node name="Pos0" type="Marker2D" parent="CounterManager" unique_id=184271073]
+position = Vector2(370, 740)
+
+[node name="Pos1" type="Marker2D" parent="CounterManager" unique_id=135046546]
+position = Vector2(480, 740)
+
+[node name="Pos2" type="Marker2D" parent="CounterManager" unique_id=588524304]
+position = Vector2(590, 740)
+
+[node name="Pos3" type="Marker2D" parent="CounterManager" unique_id=1009822341]
+position = Vector2(700, 740)
+
+[node name="CashierManager" type="Node" parent="." unique_id=3754114 node_paths=PackedStringArray("spawn_pos")]
+script = ExtResource("14_hxkax")
+cashier_scene = ExtResource("4_g0siu")
+spawn_pos = NodePath("SpawnPos")
+
+[node name="SpawnPos" type="Marker2D" parent="CashierManager" unique_id=1230927300]
+position = Vector2(536, 1103)
 
 [connection signal="timeout" from="CustomerManager/SpawnTimer" to="CustomerManager" method="_on_spawn_timer_timeout"]

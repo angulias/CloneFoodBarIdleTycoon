@@ -1,5 +1,7 @@
 extends Node
 
+signal on_customer_request(customer: Customer)
+
 @export var coffee: Item
 @export var burger: Item
 
