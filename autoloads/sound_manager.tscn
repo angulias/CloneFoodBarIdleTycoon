@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://c5yr7oru1ky1e"]
+
+[ext_resource type="Script" uid="uid://b67sf5pncucbm" path="res://autoloads/sound_manager.gd" id="1_4udv5"]
+[ext_resource type="AudioStream" uid="uid://cyscepupprrdm" path="res://Assets/Sound/flat-8-bit-gaming-music-instrumental-211547.mp3" id="2_xy5rq"]
+
+[node name="SoundManager" type="Node" unique_id=1453639592 node_paths=PackedStringArray("stream_players")]
+script = ExtResource("1_4udv5")
+stream_players = [NodePath("SFX0"), NodePath("SFX1"), NodePath("SFX2"), NodePath("SFX3"), NodePath("SFX4")]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1111624592]
+stream = ExtResource("2_xy5rq")
+volume_db = -25.0
+autoplay = true
+bus = &"Music"
+
+[node name="SFX0" type="AudioStreamPlayer" parent="." unique_id=1491950437]
+bus = &"SFX"
+
+[node name="SFX1" type="AudioStreamPlayer" parent="." unique_id=441395360]
+bus = &"SFX"
+
+[node name="SFX2" type="AudioStreamPlayer" parent="." unique_id=152221992]
+bus = &"SFX"
+
+[node name="SFX3" type="AudioStreamPlayer" parent="." unique_id=1197489637]
+bus = &"SFX"
+
+[node name="SFX4" type="AudioStreamPlayer" parent="." unique_id=2123590955]
+bus = &"SFX"
