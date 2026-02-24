@@ -21,7 +21,7 @@ func get_free_audio_player() -> AudioStreamPlayer:
 	return null
 
 func play_coins() -> void:
-	play_audio(COINS, 0.0)
+	play_audio(COINS, -25.0)
 	
 func play_ui() -> void:
-	play_audio(NORMAL_SFX, 0.0)
+	play_audio(NORMAL_SFX, -25.0)

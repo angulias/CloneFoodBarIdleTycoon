@@ -16,6 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://bssmo4qo5ameu" path="res://Scenes/Customer/customer.tscn" id="12_kw6cb"]
 [ext_resource type="Script" uid="uid://2d60hkwqmts5" path="res://Scenes/manager/counter_manager.gd" id="13_ii7ab"]
 [ext_resource type="Script" uid="uid://c4005qbimoyvh" path="res://Scenes/manager/cashier_manager.gd" id="14_hxkax"]
+[ext_resource type="Script" uid="uid://cvqk77ku71o3" path="res://Scenes/game/game_ui.gd" id="17_2wwbv"]
+[ext_resource type="PackedScene" uid="uid://dhpcuxt6jt5ql" path="res://Scenes/ui/upgrade_panel.tscn" id="18_klkrs"]
+[ext_resource type="Texture2D" uid="uid://bhi5q2orown02" path="res://Assets/Sprites/UI/Arrow.png" id="19_2kyel"]
 
 [node name="Game" type="Node2D" unique_id=702045743]
 
@@ -92,4 +95,47 @@ spawn_pos = NodePath("SpawnPos")
 [node name="SpawnPos" type="Marker2D" parent="CashierManager" unique_id=1230927300]
 position = Vector2(536, 1103)
 
+[node name="GameUI" type="CanvasLayer" parent="." unique_id=441141336]
+script = ExtResource("17_2wwbv")
+
+[node name="CoffeeUpgradePanel" parent="GameUI" unique_id=404810377 instance=ExtResource("18_klkrs")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -275.0
+offset_top = -430.0
+offset_right = 275.0
+offset_bottom = 220.0
+
+[node name="BurgerUpgradePanel" parent="GameUI" unique_id=60835937 instance=ExtResource("18_klkrs")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -275.0
+offset_top = -430.0
+offset_right = 275.0
+offset_bottom = 220.0
+
+[node name="CoffeeButton" type="TextureButton" parent="GameUI" unique_id=808419401]
+offset_left = 445.0
+offset_top = 1315.0
+offset_right = 509.0
+offset_bottom = 1379.0
+texture_normal = ExtResource("19_2kyel")
+
+[node name="BurgerButton" type="TextureButton" parent="GameUI" unique_id=1880816940]
+offset_left = 686.0
+offset_top = 1315.0
+offset_right = 750.0
+offset_bottom = 1379.0
+texture_normal = ExtResource("19_2kyel")
+
 [connection signal="timeout" from="CustomerManager/SpawnTimer" to="CustomerManager" method="_on_spawn_timer_timeout"]
+[connection signal="pressed" from="GameUI/CoffeeButton" to="GameUI" method="_on_coffee_button_pressed"]
+[connection signal="pressed" from="GameUI/BurgerButton" to="GameUI" method="_on_burger_button_pressed"]
