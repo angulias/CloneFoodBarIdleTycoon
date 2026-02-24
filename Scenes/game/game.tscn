@@ -35,7 +35,7 @@ scale = Vector2(0.8, 0.9)
 texture = ExtResource("3_d0b77")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="CoffeeCounter" unique_id=1382939461]
+[node name="CoffeeSprite" type="Sprite2D" parent="CoffeeCounter" unique_id=1382939461]
 position = Vector2(-66.24999, -53.333332)
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("4_jbxxx")
@@ -46,7 +46,7 @@ scale = Vector2(0.8, 0.9)
 texture = ExtResource("3_d0b77")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="BurgerCounter" unique_id=154403653]
+[node name="BurgerSprite" type="Sprite2D" parent="BurgerCounter" unique_id=154403653]
 position = Vector2(-53.749992, -56.666664)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("5_2wwbv")
