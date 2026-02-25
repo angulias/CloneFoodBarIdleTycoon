@@ -11,7 +11,7 @@ const COIN_VFX = preload("res://Scenes/extra/coin_vfx.tscn")
 
 var coffee_counter_pos := Vector2(425, 1250)
 var burger_counter_pos := Vector2(680, 1250)
-var current_coins: int = 200000
+var current_coins: int = 0
 
 func get_random_item() -> Item:
 	var items: Array[Item] = [coffee, burger]
@@ -46,5 +46,5 @@ func format_coins(amount: int) -> String:
 	return str(round_to_one_decimal(display_amount)) + suffixes[index]
 
 func round_to_one_decimal(value: float) -> float:
-	return floor(value * 10 + 0.5) / 10
+	return floor(value * 10) / 10
 	
