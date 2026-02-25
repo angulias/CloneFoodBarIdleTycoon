@@ -14,7 +14,7 @@ var max_value: int
 var current_value: int
 var current_stars: int = -1
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	progress_bar.value = current_value / 25.0
 
 func init_upgrade_panel(item: Item) -> void:
@@ -27,9 +27,9 @@ func init_upgrade_panel(item: Item) -> void:
 func update_stats() -> void:
 	item_name.text = item_ref.id
 	level.text = "Lv. %s" % item_ref.current_level
-	profit.text = str(item_ref.profit)
+	profit.text = GameManager.format_coins(item_ref.profit)
+	upgrade_button.text = GameManager.format_coins(item_ref.upgrade_cost)
 	cook_time.text = str(item_ref.cook_time)
-	upgrade_button.text = str(item_ref.upgrade_cost)
 
 func _on_star_reached() -> void:
 	current_value = 0

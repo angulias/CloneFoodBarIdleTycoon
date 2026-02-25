@@ -2,6 +2,7 @@ extends Node
 
 signal on_customer_request(customer: Customer)
 signal on_customer_order_completed(customer:Customer)
+signal on_new_cashier
 
 const COIN_VFX = preload("res://Scenes/extra/coin_vfx.tscn")
 
@@ -32,3 +33,18 @@ func play_coin_vfx(spawn_position: Vector2) -> void:
 	coin_instance.global_position = new_pos
 	coin_instance.emitting = true
 	coin_instance.finished.connect(func(): coin_instance.queue_free())
+
+func format_coins(amount: int) -> String:
+	var suffixes: Array = ["", "K", "M", "B", "T", "Q"]
+	var index := 0
+	var display_amount := float(amount)
+	
+	while display_amount >= 1000 and index < suffixes.size() -1:
+		display_amount /= 1000
+		index += 1
+	
+	return str(round_to_one_decimal(display_amount)) + suffixes[index]
+
+func round_to_one_decimal(value: float) -> float:
+	return floor(value * 10 + 0.5) / 10
+	

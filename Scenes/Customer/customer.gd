@@ -18,7 +18,7 @@ var counter_pos: Vector2
 var being_served: bool
 var waiting_order: bool
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	item_label.text = str(current_order_status)
 
 func init_customer(item: Item, quantity: int) -> void:
