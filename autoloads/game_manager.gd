@@ -10,7 +10,7 @@ const COIN_VFX = preload("res://Scenes/extra/coin_vfx.tscn")
 
 var coffee_counter_pos := Vector2(425, 1250)
 var burger_counter_pos := Vector2(680, 1250)
-var current_coins: int
+var current_coins: int = 200000
 
 func get_random_item() -> Item:
 	var items: Array[Item] = [coffee, burger]

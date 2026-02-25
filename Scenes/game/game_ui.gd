@@ -3,11 +3,14 @@ class_name GameUI
 
 @onready var coffee_upgrade_panel: UpgradePanel = $CoffeeUpgradePanel
 @onready var burger_upgrade_panel: UpgradePanel = $BurgerUpgradePanel
+@onready var current_coins: Label = %CurrentCoins
 
 func _ready() -> void:
 	coffee_upgrade_panel.init_upgrade_panel(GameManager.coffee)
 	burger_upgrade_panel.init_upgrade_panel(GameManager.burger)
 
+func _process(delta: float) -> void:
+	current_coins.text = str(GameManager.current_coins)
 
 func _on_coffee_button_pressed() -> void:
 	SoundManager.play_ui()

@@ -207,3 +207,5 @@ theme_override_fonts/font = ExtResource("2_semil")
 theme_override_font_sizes/font_size = 90
 theme_override_styles/normal = SubResource("StyleBoxFlat_unxjx")
 text = "50"
+
+[connection signal="pressed" from="Panel/UpgradeButton" to="." method="_on_upgrade_button_pressed"]
